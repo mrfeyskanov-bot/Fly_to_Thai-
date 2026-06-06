@@ -1,0 +1,58 @@
+# WordPress
+wp-config.php
+wp-load.php
+wp-settings.php
+wp-db.php
+wp-admin/
+wp-includes/
+wp-content/uploads/
+wp-content/backup/
+
+# Отладка
+debug.log
+.debug
+
+# IDE и редакторы
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Зависимости
+node_modules/
+vendor/
+composer.lock
+
+# Системные файлы
+.env
+.env.local
+*.sql
+*.sql.gz
+
+# Резервные копии
+*.bak
+*.backup
+*.tmp
+
+# Кэш
+.cache/
+wp-cache/
+
+# Логи
+*.log
+
+# Скомпилированные файлы
+*.min.js
+*.min.css
+
+# Исключить важные файлы из скачивания
+!inc/
+!template-parts/
+!styles/
+!js/
+!images/
+!languages/
+!

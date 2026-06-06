@@ -1,0 +1,232 @@
+/*
+Theme Name: Fly to Thai
+Theme URI: https://example.com
+Description: Туроператор по Таиланду - профессиональные туры и путевки
+Version: 1.0.0
+Requires at least: 5.0
+Tested up to: 6.4
+Requires PHP: 7.4
+Author: Your Name
+Author URI: https://example.com
+License: GPL v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: fly-to-thai
+Domain Path: /languages
+
+== Description ==
+Современная WordPress тема для туроператора Fly to Thai. Включает все необходимые элементы для 
+управления турами, отзывами и контактной информацией.
+*/
+
+/* ===================================
+   ОСНОВНЫЕ СТИЛИ ТЕМЫ FLY TO THAI
+   =================================== */
+
+:root {
+    --primary-color: #2AA4B0;
+    --secondary-color: #E57857;
+    --dark-color: #1a1a1a;
+    --light-color: #f8f9fa;
+    --text-color: #333;
+    --border-color: #e0e0e0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Varta', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: #fff;
+}
+
+/* Заголовок */
+.navbar {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Навигация */
+.nav-link {
+    color: rgba(255,255,255,0.8) !important;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--secondary-color) !important;
+}
+
+/* Контент */
+main {
+    padding: 40px 0;
+    min-height: calc(100vh - 200px);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Статьи */
+article {
+    margin-bottom: 30px;
+}
+
+.entry-header h1,
+.entry-header h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-family: 'Vollkorn SC', serif;
+    font-weight: 700;
+}
+
+.entry-meta {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+/* Изображения */
+.entry-image img,
+img.img-fluid {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Кнопки */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(42, 164, 176, 0.3);
+}
+
+/* Подвал */
+footer {
+    background-color: var(--dark-color);
+    color: #fff;
+    margin-top: 60px;
+    padding: 40px 0 20px;
+}
+
+footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--secondary-color);
+}
+
+/* Боковая колонка */
+.widget {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: var(--light-color);
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.widget-title {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-family: 'Vollkorn SC', serif;
+    font-size: 1.3rem;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .nav-link {
+        margin: 5px 0;
+        padding: 10px 0;
+    }
+
+    main {
+        padding: 20px 0;
+    }
+
+    .container {
+        padding: 0 10px;
+    }
+
+    article {
+        margin-bottom: 20px;
+    }
+
+    footer {
+        padding: 30px 0 15px;
+    }
+}
+
+/* Утилиты */
+.text-center {
+    text-align: center;
+}
+
+.text-muted {
+    color: #6c757d;
+}
+
+.mt-5 {
+    margin-top: 3rem;
+}
+
+.mb-5 {
+    margin-bottom: 3rem;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+.p-5 {
+    padding: 3rem;
+}
+
+.border-top {
+    border-top: 1px solid var(--border-color);
+}
+
+/* Печать */
+@media print {
+    .navbar,
+    footer,
+    .sidebar {
+        display: none;
+    }
+}
