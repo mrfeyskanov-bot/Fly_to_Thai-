@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Отображение туров на странице с кнопкой "Купить"
+    // Отображение туров на странице
     function renderTours() {
         const toursContainer = document.getElementById('toursContainer');
         if (!toursContainer) return;
@@ -66,7 +66,6 @@ document.addEventListener('DOMContentLoaded', function() {
             index++;
         }
         
-        // Перепривязываем обработчики после рендера
         attachTourButtonHandlers();
         attachBuyButtonHandlers();
     }
@@ -87,6 +86,13 @@ document.addEventListener('DOMContentLoaded', function() {
             const tour = tourData[tourId];
             
             if (tour && modalBody) {
+                // Сохраняем название тура и передаём в скрытое поле формы
+                currentTourId = tourId;
+                const hiddenField = document.getElementById('hiddenTourId');
+                if (hiddenField) {
+                    hiddenField.value = currentTourId;
+                }
+                
                 modalBody.innerHTML = `
                     <h4>${tour.title}</h4>
                     <div class="modal-tour-image">
@@ -124,6 +130,33 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
+    // Функция закрытия модального окна и прокрутки к форме
+    window.closeModalAndScroll = function() {
+        const modalElement = document.getElementById('tourModal');
+        if (modalElement) {
+            const modal = bootstrap.Modal.getInstance(modalElement);
+            if (modal) {
+                modal.hide();
+            }
+        }
+        
+        setTimeout(() => {
+            document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+            document.body.classList.remove('modal-open');
+            document.body.style.cssText = '';
+        }, 100);
+        
+        const formSection = document.getElementById('contact-form');
+        if (formSection) {
+            const header = document.querySelector('.navbar');
+            const headerHeight = header ? header.offsetHeight : 76;
+            window.scrollTo({
+                top: formSection.offsetTop - headerHeight - 120,
+                behavior: 'smooth'
+            });
+        }
+    };
+    
     // Обработчики для кнопок "Купить"
     function attachBuyButtonHandlers() {
         const buyButtons = document.querySelectorAll('.tour-buy-btn');
@@ -135,15 +168,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
         function handleBuyClick() {
             const tourId = this.getAttribute('data-tour');
-            // Проверяем, авторизован ли пользователь
             fetch('check_auth.php')
                 .then(response => response.json())
                 .then(data => {
                     if (data.logged_in) {
-                        // Если авторизован - переходим к оплате
                         window.location.href = `order.php?tour_id=${tourId}`;
                     } else {
-                        // Если не авторизован - предлагаем войти или зарегистрироваться
                         if (confirm('Для покупки тура необходимо войти в аккаунт. Перейти на страницу входа?')) {
                             window.location.href = 'login.php';
                         }
@@ -207,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Проверка авторизации для шапки сайта + отображение админ-панели
+    // Проверка авторизации для шапки сайта
     async function checkAuth() {
         try {
             const response = await fetch('check_auth.php');
@@ -221,7 +251,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (userBlock) userBlock.style.display = 'inline-block';
                 if (userNameSpan) userNameSpan.textContent = data.full_name || data.username;
                 
-                // Если пользователь — администратор, показываем ссылку на админ-панель
                 if (data.role === 'admin') {
                     const adminLinkSpan = document.getElementById('adminLinkSpan');
                     if (adminLinkSpan) {

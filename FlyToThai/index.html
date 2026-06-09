@@ -147,6 +147,9 @@
                             </div>
                         </div>
                         
+                        <!-- Скрытое поле для tour_id -->
+                        <input type="hidden" name="tour_id" id="hiddenTourId" value="">
+                        
                         <div class="form-check mb-4">
                             <input class="form-check-input" type="checkbox" id="agreement" name="agreement" required>
                             <label class="form-check-label" for="agreement">
@@ -364,7 +367,7 @@
                         </p>
                         <p class="mb-0">
                             <i class="fas fa-map-marker-alt me-2"></i>
-                            Челябинск, ул. Ленина, д. 76
+                            Москва, ул. Тайская, д. 15
                         </p>
                     </div>
                 </div>
@@ -396,7 +399,7 @@
             
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <p class="copyright mb-3 mb-md-0">© 2026 Fly to Thai. Все права защищены.</p>
+                    <p class="copyright mb-3 mb-md-0">© 2025 Fly to Thai. Все права защищены.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <div class="social-links">
@@ -425,7 +428,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                    <a href="#contact-form" class="btn btn-primary" data-bs-dismiss="modal">Забронировать тур</a>
+                    <button type="button" class="btn btn-primary" onclick="closeModalAndScroll()">Забронировать тур</button>
                 </div>
             </div>
         </div>

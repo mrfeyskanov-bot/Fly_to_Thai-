@@ -15,6 +15,7 @@ if (empty($full_name) || empty($phone)) {
     exit;
 }
 
+// Если пользователь авторизован, но не передал имя/email — подставляем из сессии
 if ($user_id && empty($full_name)) {
     $stmt = $pdo->prepare("SELECT full_name, email FROM users WHERE id = ?");
     $stmt->execute([$user_id]);

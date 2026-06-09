@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($stmt->fetch()) {
             $error = 'Пользователь с таким логином или email уже существует';
         } else {
-            // Хэшируем пароль
+            // Хэш пароля
             $password_hash = password_hash($password, PASSWORD_DEFAULT);
             
             // Сохраняем пользователя
